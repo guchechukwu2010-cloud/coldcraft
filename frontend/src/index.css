@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-obsidian-950 text-slate-100 font-body antialiased;
+    background-image: 
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(14, 165, 233, 0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 80%, rgba(249, 115, 22, 0.04) 0%, transparent 50%);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-arctic-500 hover:bg-arctic-400 text-white font-display font-semibold px-6 py-3 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-arctic-500/25 active:scale-95;
+  }
+
+  .btn-ghost {
+    @apply border border-obsidian-600 hover:border-arctic-500/50 hover:bg-obsidian-800 text-slate-300 hover:text-white font-display font-medium px-6 py-3 rounded-xl transition-all duration-200;
+  }
+
+  .card {
+    @apply bg-obsidian-900 border border-obsidian-700 rounded-2xl;
+  }
+
+  .input-field {
+    @apply w-full bg-obsidian-800 border border-obsidian-600 text-slate-100 placeholder-slate-500 rounded-xl px-4 py-3 font-body text-sm focus:outline-none focus:border-arctic-500/60 focus:ring-1 focus:ring-arctic-500/30 transition-all duration-200;
+  }
+
+  .label {
+    @apply block text-xs font-display font-semibold text-slate-400 uppercase tracking-wider mb-2;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-arctic-400 via-white to-arctic-400 bg-clip-text text-transparent;
+  }
+
+  .glow-border {
+    box-shadow: 0 0 0 1px rgba(14, 165, 233, 0.3), 0 0 20px rgba(14, 165, 233, 0.1);
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0d1117;
+}
+::-webkit-scrollbar-thumb {
+  background: #30363d;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #454c56;
+}
+
+/* Loading shimmer */
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.1), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Noise texture overlay */
+.noise::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
