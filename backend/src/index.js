@@ -12,7 +12,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Security headers
-app.use(helmet());
+app.set("trust proxy", 1);
 
 // CORS
 app.use(
